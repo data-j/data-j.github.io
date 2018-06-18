@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="I AM COMING!">
+<meta name="description" content="1、每次关闭终端重新运行时都会报错，如下 12$ nvm --version-bash: nvm: command not found 解决办法 1234$ cd ~/.nvm$ source .bash_profile$ nvm --version0.33.2 另外还需要重新指定使用的node版本，否则也会报错 12$ nvm use v8Now using node v8.11.3 (npm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/06/16/000001/index.html">
+<meta property="og:title" content="博客搭建问题汇总">
+<meta property="og:url" content="http://yoursite.com/2018/06/18/000003/index.html">
 <meta property="og:site_name" content="数术">
-<meta property="og:description" content="I AM COMING!">
+<meta property="og:description" content="1、每次关闭终端重新运行时都会报错，如下 12$ nvm --version-bash: nvm: command not found 解决办法 1234$ cd ~/.nvm$ source .bash_profile$ nvm --version0.33.2 另外还需要重新指定使用的node版本，否则也会报错 12$ nvm use v8Now using node v8.11.3 (npm">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-16T01:50:06.229Z">
+<meta property="og:updated_time" content="2018-06-18T15:09:09.483Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="I AM COMING!">
+<meta name="twitter:title" content="博客搭建问题汇总">
+<meta name="twitter:description" content="1、每次关闭终端重新运行时都会报错，如下 12$ nvm --version-bash: nvm: command not found 解决办法 1234$ cd ~/.nvm$ source .bash_profile$ nvm --version0.33.2 另外还需要重新指定使用的node版本，否则也会报错 12$ nvm use v8Now using node v8.11.3 (npm">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/16/000001/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/18/000003/"/>
 
 
 
 
 
-  <title>Hello World | 数术</title>
+  <title>博客搭建问题汇总 | 数术</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/16/000001/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/18/000003/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mable">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">博客搭建问题汇总</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-16T09:37:31+08:00">
-                2018-06-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-18T22:41:46+08:00">
+                2018-06-18
               </time>
             
 
@@ -287,8 +287,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-16T09:50:06+08:00">
-                2018-06-16
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-18T23:09:09+08:00">
+                2018-06-18
               </time>
             
           </span>
@@ -321,7 +321,33 @@
       
 
       
-        <p>I AM COMING!</p>
+        <p>1、每次关闭终端重新运行时都会报错，如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ nvm --version</span><br><span class="line">-bash: nvm: command not found</span><br></pre></td></tr></table></figure>
+<p>解决办法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.nvm</span><br><span class="line">$ source .bash_profile</span><br><span class="line">$ nvm --version</span><br><span class="line">0.33.2</span><br></pre></td></tr></table></figure>
+<p>另外还需要重新指定使用的node版本，否则也会报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ nvm use v8</span><br><span class="line">Now using node v8.11.3 (npm v5.6.0)</span><br></pre></td></tr></table></figure>
+<p>2、之前已经安装过hexo，发现执行hexo s不会提示<a href="https://localhost:4000" target="_blank" rel="noopener">https://localhost:4000</a> </p>
+<p>解决办法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd blog</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p>即需要切换到blog文件下（文件名是自己命名的，blog是我的命名）</p>
+<p>排除以上原因，仍然报错，请确认一下是否为文章部分格式异常导致。</p>
+<p>判断方法只需要清空准备好的文章，看是否仍然出现错误。</p>
+<p>3、配置文件<br>_config.yml有两个，一个是blog文件夹下，一个在对应的主题文件夹blog/themes/next/。</p>
+<p>文章发表时间和更新时间在主题配置文件中控制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Post meta display settings</span><br><span class="line">post_meta:</span><br><span class="line">  item_text: true</span><br><span class="line">  created_at: true</span><br><span class="line">  updated_at: true</span><br><span class="line">  categories: true</span><br></pre></td></tr></table></figure>
+<p>4、创建新文章</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;new article&quot;</span><br></pre></td></tr></table></figure>
+<p>5、文章中插入图片</p>
+<p>在source文件夹中新建一个images文件夹，然后把图片放在images文件夹里。在写文章时，图片用以下方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](/images/图名称及后缀)</span><br></pre></td></tr></table></figure>
+<p>6、文章格式</p>
+<p>markdown中编辑好的文章在发表后可能存在格式异常，是因为hexo的解析与markdown存在些许的差异，不要忘了空格。</p>
+<p>“##标题”，会读取为“##标题”<br>“## 标题”，会读取为“标题”</p>
+<p>7、博客增加流量统计代码</p>
+<p>在主题配置中找到以下部分，增加对应的统计工具ID即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Baidu Analytics ID</span><br><span class="line">baidu_analytics: 59ffc6b0**************</span><br></pre></td></tr></table></figure>
+<p>next主题配置中，还有google、tencent、cnzz的统计参数。</p>
 
       
     </div>
@@ -346,8 +372,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/16/000002/" rel="next" title="利用hexo+github搭建个人博客全流程">
-                <i class="fa fa-chevron-left"></i> 利用hexo+github搭建个人博客全流程
+              <a href="/2018/06/16/000001/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -355,10 +381,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/18/000003/" rel="prev" title="博客搭建问题汇总">
-                博客搭建问题汇总 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
