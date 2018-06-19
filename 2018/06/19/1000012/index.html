@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在开窗函数出现之前，存在着很多用 SQL 语句很难解决的问题，很多都要通过复杂的相关子查询或者存储过程来完成。为了解决这些问题，在2003年ISO SQL标准加入了开窗函数，开窗函数的使用使得这些经典的难题可以被轻松的解决。 下面通过一些简单的需求示例介绍主要的开窗函数。 本例的数据源：  select * from wx_tmp1;   需求1：要在源表中，增加两列，全国总的gmv和各城市的gm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hive SQL主要开窗函数用法介绍">
+<meta property="og:url" content="http://yoursite.com/2018/06/19/1000012/index.html">
+<meta property="og:site_name" content="数术">
+<meta property="og:description" content="在开窗函数出现之前，存在着很多用 SQL 语句很难解决的问题，很多都要通过复杂的相关子查询或者存储过程来完成。为了解决这些问题，在2003年ISO SQL标准加入了开窗函数，开窗函数的使用使得这些经典的难题可以被轻松的解决。 下面通过一些简单的需求示例介绍主要的开窗函数。 本例的数据源：  select * from wx_tmp1;   需求1：要在源表中，增加两列，全国总的gmv和各城市的gm">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/12_00.jpeg">
+<meta property="og:image" content="http://yoursite.com/images/12_01.jpeg">
+<meta property="og:image" content="http://yoursite.com/images/12_02.jpeg">
+<meta property="og:image" content="http://yoursite.com/images/12_03.jpeg">
+<meta property="og:image" content="http://yoursite.com/images/12_04.jpeg">
+<meta property="og:image" content="http://yoursite.com/images/12_05.jpeg">
+<meta property="og:image" content="http://yoursite.com/images/12_06.jpeg">
+<meta property="og:image" content="http://yoursite.com/images/12_07.jpeg">
+<meta property="og:image" content="http://yoursite.com/images/12_08.jpeg">
+<meta property="og:image" content="http://yoursite.com/images/12_09.jpeg">
+<meta property="og:updated_time" content="2018-06-19T12:37:56.359Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hive SQL主要开窗函数用法介绍">
+<meta name="twitter:description" content="在开窗函数出现之前，存在着很多用 SQL 语句很难解决的问题，很多都要通过复杂的相关子查询或者存储过程来完成。为了解决这些问题，在2003年ISO SQL标准加入了开窗函数，开窗函数的使用使得这些经典的难题可以被轻松的解决。 下面通过一些简单的需求示例介绍主要的开窗函数。 本例的数据源：  select * from wx_tmp1;   需求1：要在源表中，增加两列，全国总的gmv和各城市的gm">
+<meta name="twitter:image" content="http://yoursite.com/images/12_00.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/19/1000012/"/>
+
+
+
+
+
+  <title>Hive SQL主要开窗函数用法介绍 | 数术</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?59ffc6b0fe79032bb715a31084a30ad1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">数术</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/1000012/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mable">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="数术">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hive SQL主要开窗函数用法介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T20:31:01+08:00">
+                2018-06-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T20:37:56+08:00">
+                2018-06-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在开窗函数出现之前，存在着很多用 SQL 语句很难解决的问题，很多都要通过复杂的相关子查询或者存储过程来完成。为了解决这些问题，在2003年ISO SQL标准加入了开窗函数，开窗函数的使用使得这些经典的难题可以被轻松的解决。</p>
+<p>下面通过一些简单的需求示例介绍主要的开窗函数。</p>
+<p>本例的数据源：</p>
+<blockquote>
+<p>select * from wx_tmp1;</p>
+</blockquote>
+<p><img src="/images/12_00.jpeg" alt=""></p>
+<h4 id="需求1：要在源表中，增加两列，全国总的gmv和各城市的gmv占比。"><a href="#需求1：要在源表中，增加两列，全国总的gmv和各城市的gmv占比。" class="headerlink" title="需求1：要在源表中，增加两列，全国总的gmv和各城市的gmv占比。"></a>需求1：要在源表中，增加两列，全国总的gmv和各城市的gmv占比。</h4><blockquote>
+<p>select *,sum(gmv) over() as all_gmv,<br>gmv/sum(gmv) over() as gmv_pro<br>from wx_tmp1;</p>
+</blockquote>
+<p><img src="/images/12_01.jpeg" alt=""></p>
+<p>这就是开窗函数的妙处。SQL标准允许将所有聚合函数用做开窗函数，只需要在聚合函数后加over()即可。</p>
+<p>over()可以传入对应的子句来达到不同的效果，下面一一介绍。</p>
+<h4 id="需求2：要在源表中，增加两列，各区域的gmv及各分组的gmv。"><a href="#需求2：要在源表中，增加两列，各区域的gmv及各分组的gmv。" class="headerlink" title="需求2：要在源表中，增加两列，各区域的gmv及各分组的gmv。"></a>需求2：要在源表中，增加两列，各区域的gmv及各分组的gmv。</h4><blockquote>
+<p>select *,<br>sum(gmv) over(partition by area) as area_gmv,<br>sum(gmv) over(partition by group) as group_gmv<br>from wx_tmp1;</p>
+</blockquote>
+<p><img src="/images/12_02.jpeg" alt=""></p>
+<p>partition by对表进行分区然后聚合计算每个分区的数据，且同一个select语句中可以同时使用多个开窗函数，而且这些开窗函数并不会相互干扰。</p>
+<h4 id="需求3：在源表的基础上，增加一列，按gmv升序排列并计算累计gmv。"><a href="#需求3：在源表的基础上，增加一列，按gmv升序排列并计算累计gmv。" class="headerlink" title="需求3：在源表的基础上，增加一列，按gmv升序排列并计算累计gmv。"></a>需求3：在源表的基础上，增加一列，按gmv升序排列并计算累计gmv。</h4><blockquote>
+<p>select *,<br>sum(gmv) over(order by gmv rows between unbounded preceding and current row) as leiji_gmv<br>from wx_tmp1;</p>
+</blockquote>
+<p><img src="/images/12_03.jpeg" alt=""></p>
+<p>order by子句可以对结果集按照指定的排序规则进行排序，并且在一个指定的范围内进行聚合运算。</p>
+<p>order by子句的语法为：order by 字段名 range|rows between 边界规则1 and 边界规则2。</p>
+<p>range|rows between 边界规则1 and 边界规则2，这个子句又被称为定位框架。</p>
+<p>range是按照值的范围进行范围的定义，rows是按照行的范围进行范围的定义，边界范围可取值：</p>
+<p>current row：当前行</p>
+<p>n preceding：前N行，比如 2 preceding</p>
+<p>unbounded preceding：一直到第一条记录</p>
+<p>n following：后N行</p>
+<p>unbounded following：一直到最后一条记录</p>
+<p>这个需求中，计算累计gmv，即计算第一条记录到当条记录的gmv之和。</p>
+<p>rows between unbounded preceding and current row，是最常用的定位框架，可以省略。</p>
+<p>因此可以简写为以下：</p>
+<blockquote>
+<p>select *,<br>sum(gmv) over(order by gmv) as leiji_gmv<br>from wx_tmp1;</p>
+</blockquote>
+<h4 id="需求4：在源表中，增加一列，计算gmv的分组排名。"><a href="#需求4：在源表中，增加一列，计算gmv的分组排名。" class="headerlink" title="需求4：在源表中，增加一列，计算gmv的分组排名。"></a>需求4：在源表中，增加一列，计算gmv的分组排名。</h4><blockquote>
+<p>select *,<br>count(city) over(partition by group order by gmv desc) as ranks<br>from wx_tmp1;</p>
+</blockquote>
+<p><img src="/images/12_04.jpeg" alt=""></p>
+<p>分组排名有另外三个开窗函数：</p>
+<blockquote>
+<p>select *,count(city) over(partition by group order by gmv desc) as ranks1,<br>rank() over(partition by group order by gmv desc) as ranks2,<br>dense_rank() over(partition by group order by gmv desc) as ranks3,<br>row_number() over(partition by group order by gmv desc) as ranks4<br>from wx_tmp1;</p>
+</blockquote>
+<p><img src="/images/12_05.jpeg" alt=""></p>
+<p>通过结果可以看出几种排序的差异。ranks2和ranks3的排序在本例中没有体现：</p>
+<p>ranks2：如果下面还有一个城市的话，排名是11；ranks3：如果下面还有一个城市的话，排名是10。</p>
+<h4 id="需求5：在源表中增加两列，取出每组gmv最大的城市，和最小的城市。"><a href="#需求5：在源表中增加两列，取出每组gmv最大的城市，和最小的城市。" class="headerlink" title="需求5：在源表中增加两列，取出每组gmv最大的城市，和最小的城市。"></a>需求5：在源表中增加两列，取出每组gmv最大的城市，和最小的城市。</h4><blockquote>
+<p>select *,first_value(city) over(partition by group order by gmv desc) as first_city,<br>first_value(city) over(partition by group order by gmv) last_city<br>from wx_tmp1;</p>
+</blockquote>
+<p><img src="/images/12_06.jpeg" alt=""></p>
+<p>first_value:按分组排序后，取范围内第一个值。相应的还有last_value,按分组排序后，取范围内，最后一个值。</p>
+<p>如果这个需求中，按以下写法的话：</p>
+<blockquote>
+<p>select *,first_value(city) over(partition by group order by gmv desc) as first_city,<br>last_value(city) over(partition by group order by gmv desc) last_city<br>from wx_tmp1;</p>
+</blockquote>
+<p>会发现last_city的结果不是我们想要的。是因为使用了默认定义框架：第一行到当前行的最后一个值。</p>
+<p><img src="/images/12_07.jpeg" alt=""></p>
+<p>要纠正这个问题，需要使用定位框架，因为相对麻烦，建议用first_value()替代。</p>
+<h4 id="需求6：在源数据中增加两列，第一列取gmv分组排名在当前城市上面1位的城市，第二列取gmv分组排名在当前城市下面1位的城市。"><a href="#需求6：在源数据中增加两列，第一列取gmv分组排名在当前城市上面1位的城市，第二列取gmv分组排名在当前城市下面1位的城市。" class="headerlink" title="需求6：在源数据中增加两列，第一列取gmv分组排名在当前城市上面1位的城市，第二列取gmv分组排名在当前城市下面1位的城市。"></a>需求6：在源数据中增加两列，第一列取gmv分组排名在当前城市上面1位的城市，第二列取gmv分组排名在当前城市下面1位的城市。</h4><blockquote>
+<p>select *,lag(city,1,null) over(partition by group order by gmv desc) as up_city,<br>lead(city,1,null) over(partition by group order by gmv desc) down_city<br>from wx_tmp1;</p>
+</blockquote>
+<p><img src="/images/12_08.jpeg" alt=""></p>
+<p>如果要取排名前/后两位的城市，调整lag和lead第二个参数即可。第三个参数为默认值，可以省略，省略的话，默认取不到时是NULL，如果不省略的话，取不到时则取指定默认值。</p>
+<p>还有一个开窗函数，如下用法：</p>
+<blockquote>
+<p>select *,ntile(2) over(partition by group order by gmv desc) rn from wx_tmp1<br>即将源表按group分组，并按gmv降序排列后，将每组平均分为2部分。</p>
+</blockquote>
+<p><img src="/images/12_09.jpeg" alt=""></p>
+<p>还有其他聚合函数用法跟sum()一致，就不一一介绍了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/19/1000011/" rel="next" title="数据挖掘算法：啤酒与尿布的SQL实现">
+                <i class="fa fa-chevron-left"></i> 数据挖掘算法：啤酒与尿布的SQL实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Mable</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#需求1：要在源表中，增加两列，全国总的gmv和各城市的gmv占比。"><span class="nav-number">1.</span> <span class="nav-text">需求1：要在源表中，增加两列，全国总的gmv和各城市的gmv占比。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需求2：要在源表中，增加两列，各区域的gmv及各分组的gmv。"><span class="nav-number">2.</span> <span class="nav-text">需求2：要在源表中，增加两列，各区域的gmv及各分组的gmv。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需求3：在源表的基础上，增加一列，按gmv升序排列并计算累计gmv。"><span class="nav-number">3.</span> <span class="nav-text">需求3：在源表的基础上，增加一列，按gmv升序排列并计算累计gmv。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需求4：在源表中，增加一列，计算gmv的分组排名。"><span class="nav-number">4.</span> <span class="nav-text">需求4：在源表中，增加一列，计算gmv的分组排名。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需求5：在源表中增加两列，取出每组gmv最大的城市，和最小的城市。"><span class="nav-number">5.</span> <span class="nav-text">需求5：在源表中增加两列，取出每组gmv最大的城市，和最小的城市。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需求6：在源数据中增加两列，第一列取gmv分组排名在当前城市上面1位的城市，第二列取gmv分组排名在当前城市下面1位的城市。"><span class="nav-number">6.</span> <span class="nav-text">需求6：在源数据中增加两列，第一列取gmv分组排名在当前城市上面1位的城市，第二列取gmv分组排名在当前城市下面1位的城市。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mable</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
