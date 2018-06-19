@@ -286,7 +286,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T20:22:47+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T20:25:37+08:00">
                 2018-06-19
               </time>
             
@@ -360,7 +360,7 @@
 <p>select * from wx_tmp1;</p>
 </blockquote>
 <p>数据格式如下</p>
-<p><img src="/images/11_00.jepg" alt=""></p>
+<p><img src="/images/11_00.jpeg" alt=""></p>
 <p>第一列为订单id，第二列为商品id，第三列为商品名称（真实数据，故擦掉），每个商品一条记录。</p>
 <p>2、统计每两种商品同时被购买的次数</p>
 <blockquote>
@@ -372,7 +372,7 @@
 <p>create table wx_tmp3 as<br>select a.product_a,a.product_b,a.buy_cnt_together,<br>b.buy_cnt buy_cnt_a,c.buy_cnt buy_cnt_b,d.order_cnt,<br>a.buy_cnt_together/d.order_cnt support, –支持度<br>a.buy_cnt_together/b.buy_cnt confidence, –置信度<br>a.buy_cnt_together/(b.buy_cnt*c.buy_cnt/d.order_cnt) lift, –提升度<br>(a.buy_cnt_together/b.buy_cnt+a.buy_cnt_together/c.buy_cnt)/2 kulc, –KULC 度量<br>a.buy_cnt_together/b.buy_cnt/(a.buy_cnt_together/c.buy_cnt) ir –不平衡比<br>from wx_tmp2 a join<br>(<br>select skuid,count(distinct orderid) buy_cnt<br>from wx_tmp1<br>group by 1<br>) b on a.product_a=b.skuid join<br>(<br>select skuid,count(distinct orderid) buy_cnt<br>from wx_tmp1<br>group by 1<br>) c on a.product_b=c.skuid join<br>(<br>select count(distinct orderid) order_cnt<br>from wx_tmp1<br>) d on 1=1;</p>
 </blockquote>
 <p>结果如下</p>
-<p><img src="/images/11_01.jepg" alt=""></p>
+<p><img src="/images/11_01.jpeg" alt=""></p>
 <p>每一行即商品A和商品B的关联规则。</p>
 <p>第一列为商品A，第二列为商品B，第三列为商品A与商品B同时购买的订单量，第四列为购买商品A的订单量，第五列为购买商品B的订单量，第六列为总的订单量，</p>
 <p>第七列为支持度，即buy_cnt_together/order_cnt</p>
