@@ -239,6 +239,787 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/1000010/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mable">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="数术">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/19/1000010/" itemprop="url">Hive常用函数介绍（二）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T19:27:14+08:00">
+                2018-06-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T20:03:43+08:00">
+                2018-06-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>显示所有数据库</p>
+<blockquote>
+<p>show databases</p>
+</blockquote>
+<p>显示所有表</p>
+<blockquote>
+<p>show tables</p>
+</blockquote>
+<p>显示数据库a中的所有表</p>
+<blockquote>
+<p>show tables from a</p>
+</blockquote>
+<p>显示所有以dw_开头的表</p>
+<blockquote>
+<p>show tables ‘dw_*’</p>
+</blockquote>
+<p>显示数据库a中所有以dw_开头的表</p>
+<blockquote>
+<p>show tables from a ‘dw_*’</p>
+</blockquote>
+<p>显示表数据库a中表dw_abc的分区信息</p>
+<blockquote>
+<p>show partitions a.dw_abc</p>
+</blockquote>
+<p>显示内置函数</p>
+<blockquote>
+<p>show functions</p>
+</blockquote>
+<p>显示包含date_ad的内置函数</p>
+<blockquote>
+<p>show functions ‘date_ad*’</p>
+</blockquote>
+<p>显示表guestbook的列信息，describe也可缩写为desc</p>
+<blockquote>
+<p>describe guestbook</p>
+</blockquote>
+<p>显示表guestbook中列userid的信息</p>
+<blockquote>
+<p>describe guestbook userid</p>
+</blockquote>
+<p>显示数据库a中guestbook表的列名称，一般用的较少，describe显示的信息更多</p>
+<blockquote>
+<p>show columns from a.guestbook</p>
+</blockquote>
+<p>显示数据库a中表guestbook，指定分区的列信息</p>
+<blockquote>
+<p>describe a.guestbook partition(day=’2018-02-12’)</p>
+</blockquote>
+<p>如果e1为null，则返回e2，否则返回e1</p>
+<blockquote>
+<p>nvl(e1,e2)</p>
+</blockquote>
+<p>返回当年第一天</p>
+<blockquote>
+<p>select trunc(‘2018-02-13 23:30:35’,’YY’) –2018-01-01</p>
+</blockquote>
+<p>返回当月第一天</p>
+<blockquote>
+<p>select trunc(‘2018-02-13 23:30:35’,’MM’) –2018-02-01</p>
+</blockquote>
+<p>返回当月最后一天，只传入2018-02-13也可</p>
+<blockquote>
+<p>select last_day(‘2018-02-13 23:30:35’) –2018-02-28</p>
+</blockquote>
+<p>返回下一个周一，第二个参数修改为TU，则返回下一个周二，依次WE,TH,FR,SASU为周三、周四等</p>
+<blockquote>
+<p>select next_day(‘2018-02-13 23:30:35’,’MO’)</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/1000009/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mable">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="数术">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/19/1000009/" itemprop="url">Hive Sql常见报错</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T19:27:04+08:00">
+                2018-06-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T20:00:00+08:00">
+                2018-06-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1</p>
+<blockquote>
+<p>FAILED: NullPointerException null </p>
+</blockquote>
+<p>不能用视图作为left outer join的右表</p>
+<p>2</p>
+<p>left semi join 的右边表的字段，不能出现在select列中 </p>
+<p>3</p>
+<blockquote>
+<p>FAILED: SemanticException Column ***_id Found in more than One Tables/Subqueries</p>
+</blockquote>
+<p>有一列在多个表中出现，但是没加表名前缀</p>
+<p>4</p>
+<p>left outer join 的使用，对于右表的筛选条件的设置要特别注意，如果放在where中，则left join会变为inner join，实际是先执行了left join之后，又执行筛选，这样会把左边中的部分记录删除，不符合left join对左表取全量的初衷了。需要将右表条件以子表的形式指定，或者放在on中。</p>
+<p>5</p>
+<blockquote>
+<p>FAILED: ParseException line 3:0 cannot recognize input near ‘from’’(‘’select’ in selection target</p>
+</blockquote>
+<p>无法识别在’from’和’(‘、’select’附近的输入，这种一般就是多了个符号，或者符号格式不对，在提示的位置找一下即可</p>
+<p>6</p>
+<blockquote>
+<p>FAILED: SemanticException [Error 10004]:line 4:59 Invalid table alias or column reference ‘p_<em>‘:(possible column names are:</em>)</p>
+</blockquote>
+<p>该语句的第四行、59个字符开始出现错误，列名引用错误</p>
+<p>7</p>
+<blockquote>
+<p>FAILED: SemanticException [Error 10052]: In strict mode,cartesian product is not allowed. If you really want to perform the operation,set hive.mapred.mode=nonstrict</p>
+</blockquote>
+<p>语法中计算了笛卡尔积。少写了on条件，如果要求笛卡尔积可以写 on 1=1。</p>
+<p>8</p>
+<blockquote>
+<p>FAILED: SemanticException [Error 10001]:line 1:14 Table not found ‘***’</p>
+</blockquote>
+<p>表名错误，或者没有加数据库名前缀</p>
+<p>9</p>
+<blockquote>
+<p>FAILED: Execution Error,return code 2 from org.apache.hadoop.hive.ql.exec.mr.MapRedTask</p>
+</blockquote>
+<p>很多错误都可能导致这个错误。本人遇到的大多是部分内置函数的字段存在NULL值导致</p>
+<p>除了这个错误提示，基本上都可以从错误提示的内容，快速发现问题。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/1000008/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mable">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="数术">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/19/1000008/" itemprop="url">Hive学习之semi join</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T19:26:57+08:00">
+                2018-06-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T19:54:47+08:00">
+                2018-06-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Hive不支持where子句中的子查询，SQL常用的exist in子句在Hive中是不支持的。比如以下语句在Hive中执行会报错：</p>
+<blockquote>
+<p>select a.key, a.value<br>from a<br>where a.key in (select b.key from b);</p>
+</blockquote>
+<p>semi join可以完美解决这一问题，可以改写为：</p>
+<blockquote>
+<p>select a.key, a.value<br>from a left semi join b on (a.key = b.key);</p>
+</blockquote>
+<p>注意，semi join的写法并不等同于以下写法。当b表中key存在重复记录时，以下语句会查出多条记录。</p>
+<blockquote>
+<p>select a.key, a.value<br>from a left outer join b on (a.key = b.key)<br>where b.key is not null;</p>
+</blockquote>
+<p>a left semi join b on (a.key = b.key)：当a表中key值在b表中存在时保留该记录，否则就不保留。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/1000007/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mable">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="数术">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/19/1000007/" itemprop="url">Hive简单优化总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T19:26:51+08:00">
+                2018-06-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T19:52:24+08:00">
+                2018-06-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、只取需要的列，尽量减少用select *；</p>
+<p>2、如果有，尽量使用分区字段过滤；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--查看table分区字段</span><br><span class="line">&gt;show partitions table</span><br></pre></td></tr></table></figure>
+<p>3、join时，将条件写入子查询或写在on中；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;select a.id from table_a a left outer join table_b b on a.id = b.id where b.day=&apos;2017-12-13&apos;;</span><br><span class="line"></span><br><span class="line">--更快的写法</span><br><span class="line">&gt;select a.id from table_a a left outer join table_b b on (a.id = b.id and b.day=&apos;2017-12-13&apos;);</span><br><span class="line"></span><br><span class="line">--或者直接写成子查询</span><br><span class="line">&gt;select a.id from table_a a left outer join (select id from table_b where day=&apos;2017-12-13&apos;) b on a.id = b.id;</span><br></pre></td></tr></table></figure>
+<p>4、当数据量较大时，用group by代替count(distinct)；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;select day,count(distinct id) as uv from table_a group by day;</span><br><span class="line"></span><br><span class="line">--可以写成如下形式，当数据量大时运行较快</span><br><span class="line">&gt;select day,count(id) as uv from (select day,id from table_a group by day,id) a group by day;</span><br></pre></td></tr></table></figure>
+<p>5、MapJoin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">MapJoin通常用于一个小表和一个大表进行join的场景。0.7版本之后，默认自动会转换MapJoin。</span><br><span class="line"></span><br><span class="line">--可以查看参数hive.auto.convert.join的值，来确认是否会自动转换。</span><br><span class="line">&gt;set hive.auto.convert.join</span><br><span class="line">&gt;hive.auto.convert.join=true</span><br><span class="line"></span><br><span class="line">--默认小表的大小不能超过25M，否则不会自动转换。但可以修改参数hive.mapjoin.smalltable.filesize的值，来修改小表的大小。</span><br><span class="line">&gt;set hive.mapjoin.smalltable.filesize = 50000000</span><br><span class="line">&gt;Success</span><br></pre></td></tr></table></figure>
+<p>6、并行job</p>
+<p>在不存在依赖关系的情况下，是可以并行执行job的，比如以下情况。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">select * from (</span><br><span class="line">select count(*) from logs where log_date = 20130801 and item_id = 1</span><br><span class="line">union all</span><br><span class="line">select count(*) from logs where log_date = 20130802 and item_id = 2</span><br><span class="line">union all</span><br><span class="line">select count(*) from logs where log_date = 20130803 and item_id = 3</span><br><span class="line">) t</span><br><span class="line"></span><br><span class="line">--开启并行的参数是hive.exec.parallel。默认并行的job数不超过8，可以通过hive.exec.parallel.thread.number进行设置，但避免设置过大而占用过多资源。</span><br><span class="line">&gt;set hive.exec.parallel=ture</span><br><span class="line">&gt;Success</span><br><span class="line">&gt;set hive.exec.parallel.thread.number</span><br><span class="line">&gt;hive.exec.parallel.thread.number=8</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/1000006/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -258,7 +1039,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/19/1000006/" itemprop="url">Hive常用函数介绍</a></h1>
+                <a class="post-title-link" href="/2018/06/19/1000006/" itemprop="url">Hive常用函数介绍（一）</a></h1>
         
 
         <div class="post-meta">
@@ -286,7 +1067,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T19:45:04+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T20:04:36+08:00">
                 2018-06-19
               </time>
             
@@ -1410,7 +2191,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
