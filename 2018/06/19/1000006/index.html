@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="I AM COMING!">
+<meta name="description" content="1、round 1234567--四舍五入取整&amp;gt;select round(3.5)&amp;gt;4--指定精度取整&amp;gt;select round(3.1415926,4)&amp;gt;3.1416 2、floor 123--向下取整&amp;gt;select floor(3.1415926)&amp;gt;3 3、ceil/ceiling 123--向上取整&amp;gt;select ceil(3.1415926)&amp;gt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/06/16/1000001/index.html">
+<meta property="og:title" content="Hive常用函数介绍">
+<meta property="og:url" content="http://yoursite.com/2018/06/19/1000006/index.html">
 <meta property="og:site_name" content="数术">
-<meta property="og:description" content="I AM COMING!">
+<meta property="og:description" content="1、round 1234567--四舍五入取整&amp;gt;select round(3.5)&amp;gt;4--指定精度取整&amp;gt;select round(3.1415926,4)&amp;gt;3.1416 2、floor 123--向下取整&amp;gt;select floor(3.1415926)&amp;gt;3 3、ceil/ceiling 123--向上取整&amp;gt;select ceil(3.1415926)&amp;gt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-16T01:50:06.229Z">
+<meta property="og:updated_time" content="2018-06-19T11:45:04.913Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="I AM COMING!">
+<meta name="twitter:title" content="Hive常用函数介绍">
+<meta name="twitter:description" content="1、round 1234567--四舍五入取整&amp;gt;select round(3.5)&amp;gt;4--指定精度取整&amp;gt;select round(3.1415926,4)&amp;gt;3.1416 2、floor 123--向下取整&amp;gt;select floor(3.1415926)&amp;gt;3 3、ceil/ceiling 123--向上取整&amp;gt;select ceil(3.1415926)&amp;gt">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/16/1000001/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/19/1000006/"/>
 
 
 
 
 
-  <title>Hello World | 数术</title>
+  <title>Hive常用函数介绍 | 数术</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/16/1000001/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/1000006/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mable">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">Hive常用函数介绍</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-16T09:37:31+08:00">
-                2018-06-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T19:26:42+08:00">
+                2018-06-19
               </time>
             
 
@@ -287,8 +287,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-16T09:50:06+08:00">
-                2018-06-16
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T19:45:04+08:00">
+                2018-06-19
               </time>
             
           </span>
@@ -352,7 +352,26 @@
       
 
       
-        <p>I AM COMING!</p>
+        <p>1、round</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">--四舍五入取整</span><br><span class="line">&gt;select round(3.5)</span><br><span class="line">&gt;4</span><br><span class="line"></span><br><span class="line">--指定精度取整</span><br><span class="line">&gt;select round(3.1415926,4)</span><br><span class="line">&gt;3.1416</span><br></pre></td></tr></table></figure>
+<p>2、floor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--向下取整</span><br><span class="line">&gt;select floor(3.1415926)</span><br><span class="line">&gt;3</span><br></pre></td></tr></table></figure>
+<p>3、ceil/ceiling</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--向上取整</span><br><span class="line">&gt;select ceil(3.1415926)</span><br><span class="line">&gt;4</span><br></pre></td></tr></table></figure>
+<p>4、rand</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--返回0到1范围内的随机数</span><br><span class="line">&gt;select rand()</span><br><span class="line">&gt;0.32084268521140447</span><br></pre></td></tr></table></figure>
+<p>5、like</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">--比较运算符，A like B。如果字符串A或者字符串B为NULL，则返回NULL；</span><br><span class="line">--如果字符串A符合表达式B 的正则语法，则为TRUE；否则为FALSE。</span><br><span class="line">--B中字符”_”表示任意单个字符，而字符”%”表示任意数量的字符。</span><br><span class="line">&gt;select &apos;football&apos; like &apos;foot%&apos;</span><br><span class="line">&gt;true</span><br><span class="line"></span><br><span class="line">&gt;select &apos;football&apos; like &apos;foot____&apos;</span><br><span class="line">&gt;true</span><br><span class="line"></span><br><span class="line">--not A like B 或者 A not like B</span><br><span class="line">&gt;select not &apos;football&apos; like &apos;fff%&apos;</span><br><span class="line">&gt;true</span><br><span class="line"></span><br><span class="line">&gt;select &apos;football&apos; not like &apos;fff%&apos;</span><br><span class="line">&gt;true</span><br></pre></td></tr></table></figure>
+<p>6、rlike/regexp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">--比较运算符，A rlike B。如果字符串A或者字符串B为NULL，则返回NULL；</span><br><span class="line">--如果字符串A符合表达式B 的正则语法，则为TRUE；否则为FALSE。</span><br><span class="line">--not rlike用法与like一致</span><br><span class="line">&gt;select &apos;footbar&apos; rlike &apos;^f.*r$&apos;</span><br><span class="line">&gt;true</span><br><span class="line"></span><br><span class="line">&gt;select &apos;123456&apos; rlike &apos;^\d+$&apos;</span><br><span class="line">&gt;true</span><br></pre></td></tr></table></figure>
+<p>7、if</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">--if(boolean testCondition, T valueTrue, T valueFalseOrNull)</span><br><span class="line">--当条件testCondition为TRUE时，返回valueTrue；否则返回valueFalseOrNull</span><br><span class="line">&gt;select if(1=2,100,200)</span><br><span class="line">&gt;200</span><br><span class="line"></span><br><span class="line">&gt;select if(1=1,100,200)</span><br><span class="line">&gt;100</span><br></pre></td></tr></table></figure>
+<p>8、coalesce</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--返回参数中的第一个非空值；如果所有值都为NULL，那么返回NULL</span><br><span class="line">&gt;select coalesce(null,&apos;100&apos;,&apos;50&apos;)</span><br><span class="line">&gt;100</span><br></pre></td></tr></table></figure>
+<p>9、case…when…then…else…end</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;select case when 1=2 then &apos;tom&apos; when 2=2 then &apos;mary&apos; else &apos;tim&apos; end</span><br><span class="line">&gt;mary</span><br><span class="line"></span><br><span class="line">&gt;select case 100 when 50 then &apos;tom&apos; when 100 then &apos;mary&apos; else &apos;tim&apos; end</span><br><span class="line">&gt;mary</span><br></pre></td></tr></table></figure>
+<p>10、cast</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--类型转换函数，不是所有类型都可以转换，无法转换时返回null</span><br><span class="line">&gt;select cast(3.1415926 as int)</span><br><span class="line">&gt;3</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -377,8 +396,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/16/1000002/" rel="next" title="利用hexo+github搭建个人博客全流程">
-                <i class="fa fa-chevron-left"></i> 利用hexo+github搭建个人博客全流程
+              <a href="/2018/06/18/1000005/" rel="next" title="Hive数据类型：字符串相关函数">
+                <i class="fa fa-chevron-left"></i> Hive数据类型：字符串相关函数
               </a>
             
           </div>
@@ -386,10 +405,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/18/1000003/" rel="prev" title="博客搭建问题汇总">
-                博客搭建问题汇总 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
