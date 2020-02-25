@@ -79,20 +79,24 @@
 
 
 
-<meta name="description" content="SQL进阶，啥都能干！">
+<meta name="description" content="博客优化信息记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据挖掘算法：啤酒与尿布的SQL实现">
-<meta property="og:url" content="http://yoursite.com/1000011.html">
+<meta property="og:title" content="博客优化记录">
+<meta property="og:url" content="http://yoursite.com/1000013.html">
 <meta property="og:site_name" content="数术">
-<meta property="og:description" content="SQL进阶，啥都能干！">
+<meta property="og:description" content="博客优化信息记录">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/11_00.jpeg">
-<meta property="og:image" content="http://yoursite.com/images/11_01.jpeg">
-<meta property="og:updated_time" content="2020-02-25T09:35:15.570Z">
+<meta property="og:image" content="http://yoursite.com/images/13_pic01.png">
+<meta property="og:image" content="http://yoursite.com/images/13_pic02.png">
+<meta property="og:image" content="http://yoursite.com/images/13_pic03.png">
+<meta property="og:image" content="http://yoursite.com/images/13_pic04.png">
+<meta property="og:image" content="http://yoursite.com/images/13_pic05.png">
+<meta property="og:image" content="http://yoursite.com/images/13_pic06.png">
+<meta property="og:updated_time" content="2020-02-25T10:44:59.775Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据挖掘算法：啤酒与尿布的SQL实现">
-<meta name="twitter:description" content="SQL进阶，啥都能干！">
-<meta name="twitter:image" content="http://yoursite.com/images/11_00.jpeg">
+<meta name="twitter:title" content="博客优化记录">
+<meta name="twitter:description" content="博客优化信息记录">
+<meta name="twitter:image" content="http://yoursite.com/images/13_pic01.png">
 
 
 
@@ -122,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/1000011.html"/>
+  <link rel="canonical" href="http://yoursite.com/1000013.html"/>
 
 
 
 
 
-  <title>数据挖掘算法：啤酒与尿布的SQL实现 | 数术</title>
+  <title>博客优化记录 | 数术</title>
   
 
 
@@ -245,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/1000011.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/1000013.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mable">
@@ -262,7 +266,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">数据挖掘算法：啤酒与尿布的SQL实现</h2>
+          <h2 class="post-title" itemprop="name headline">博客优化记录</h2>
         
 
         <div class="post-meta">
@@ -274,8 +278,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T20:14:31+08:00">
-                2018-06-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-25T17:38:14+08:00">
+                2020-02-25
               </time>
             
 
@@ -290,7 +294,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-25T17:35:15+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-25T18:44:59+08:00">
                 2020-02-25
               </time>
             
@@ -318,7 +322,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  772 字
+                  310 字
                 </span>
               
 
@@ -334,7 +338,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  1 分钟
                 </span>
               
             </div>
@@ -342,7 +346,7 @@
 
           
               <div class="post-description">
-                  SQL进阶，啥都能干！
+                  博客优化信息记录
               </div>
           
 
@@ -359,35 +363,31 @@
       
 
       
-        <p>啤酒与尿布的算法属于电商领域中的购物篮分析，是用于挖掘不同商品之间的关联规则，进而进行商品推荐的常用算法。</p>
-<p>以下为该算法的SQL简单实现。</p>
-<p>1、源数据</p>
+        <h3 id="1、阅读全文"><a href="#1、阅读全文" class="headerlink" title="1、阅读全文"></a>1、阅读全文</h3><p>优化前，首页会显示所有文章的全文，这样首页非常长</p>
+<p>优化后，首页不显示文章正文，只显示文章description</p>
+<p>在文章中添加description，并提供文章摘录，如下图所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hive简单优化总结</span><br><span class="line">date: 2018-06-19 19:26:51</span><br><span class="line">description: Hive简单优化，分析师必备</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>优化结果展示</p>
+<p><img src="/images/13_pic01.png" alt=""></p>
+<h3 id="2、字数统计-amp-阅读时长"><a href="#2、字数统计-amp-阅读时长" class="headerlink" title="2、字数统计&amp;阅读时长"></a>2、字数统计&amp;阅读时长</h3><p>优化前</p>
+<p><img src="/images/13_pic02.png" alt=""></p>
+<p>优化后</p>
+<p><img src="/images/13_pic03.png" alt=""></p>
+<p>next主题默认已经集成了文章【字数统计】、【阅读时长】统计功能，如果我们需要使用，只需要在主题配置文件_config.yml 中打开即可。如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">post_wordcount:</span><br><span class="line">  item_text: true</span><br><span class="line">  wordcount: true         # 单篇 字数统计</span><br><span class="line">  min2read: true          # 单篇 阅读时长</span><br><span class="line">  totalcount: false       # 网站 字数统计</span><br><span class="line">  separated_meta: true</span><br></pre></td></tr></table></figure>
+<p>打开后如果文章没有字数统计功能，则需要安装插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save hexo-wordcount</span><br></pre></td></tr></table></figure>
+<p>另外如果需要显示文字的话，打开post.swig文件，路径如下：</p>
 <blockquote>
-<p>select * from wx_tmp1;</p>
+<p>blog/themes/next/layout/_macro/post.swig</p>
 </blockquote>
-<p>数据格式如下</p>
-<p><img src="/images/11_00.jpeg" alt=""></p>
-<p>第一列为订单id，第二列为商品id，第三列为商品名称（真实数据，故擦掉），每个商品一条记录。</p>
-<p>2、统计每两种商品同时被购买的次数</p>
-<blockquote>
-<p>create table wx_tmp2 as<br>select a.skuid as skuid_a,b.skuid as skuid_b,<br>count(distinct a.orderid) as buy_cnt_together<br>from wx_tmp1 a join wx_tmp1 b on a.orderid=b.orderid<br>where a.skuid&lt;&gt;b.skuid<br>group by 1,2;</p>
-</blockquote>
-<p>buy_cnt_together为两种商品同时购买的订单量</p>
-<p>3、计算置信度、支持度及提升度</p>
-<blockquote>
-<p>create table wx_tmp3 as<br>select a.product_a,a.product_b,a.buy_cnt_together,<br>b.buy_cnt buy_cnt_a,c.buy_cnt buy_cnt_b,d.order_cnt,<br>a.buy_cnt_together/d.order_cnt support, –支持度<br>a.buy_cnt_together/b.buy_cnt confidence, –置信度<br>a.buy_cnt_together/(b.buy_cnt*c.buy_cnt/d.order_cnt) lift, –提升度<br>(a.buy_cnt_together/b.buy_cnt+a.buy_cnt_together/c.buy_cnt)/2 kulc, –KULC 度量<br>a.buy_cnt_together/b.buy_cnt/(a.buy_cnt_together/c.buy_cnt) ir –不平衡比<br>from wx_tmp2 a join<br>(<br>select skuid,count(distinct orderid) buy_cnt<br>from wx_tmp1<br>group by 1<br>) b on a.product_a=b.skuid join<br>(<br>select skuid,count(distinct orderid) buy_cnt<br>from wx_tmp1<br>group by 1<br>) c on a.product_b=c.skuid join<br>(<br>select count(distinct orderid) order_cnt<br>from wx_tmp1<br>) d on 1=1;</p>
-</blockquote>
-<p>结果如下</p>
-<p><img src="/images/11_01.jpeg" alt=""></p>
-<p>每一行即商品A和商品B的关联规则。</p>
-<p>第一列为商品A，第二列为商品B，第三列为商品A与商品B同时购买的订单量，第四列为购买商品A的订单量，第五列为购买商品B的订单量，第六列为总的订单量，</p>
-<p>第七列为支持度，即buy_cnt_together/order_cnt</p>
-<p>第八列为置信度，即buy_cnt_together/buy_cnt_a</p>
-<p>第九列为提升度，即buy_cnt_together/buy_cnt_a/(buy_cnt_b/order_cnt)，可以用来评估商品A对商品B的提升程度。</p>
-<p>如果提升度等于 1，说明两个商品没有任何关联。如果小于 1，说明两个商品是负相关的关系，意味着商品A的销量越高，可能商品B的销量越低。大于 1 才表示具有正相关的关系。一般当提升度大于 3 时，我们才认为挖掘出的关联规则是有价值的。</p>
-<p>提升度是一种判断关联规则是否有效的简单手段，实际中受零事务（也即不包含商品A也不包含商品B的订单）的影响比较大。所以如果数据中含有的零事务数量较大，该度量则不合适使用。</p>
-<p>第十列为KULC 度量，(buy_cnt_together/buy_cnt_a+buy_cnt_together/)/2，可以理解为两个置信度的平均值，取值0 ~ 1，值越大，联系越大，关系越大，是常用的判断关联规则是否有效的度量。同时该度量不受零事务数量影响。</p>
-<p>第十一列为IR（不平衡比），即buy_cnt_b/buy_cnt_a，如果IR值太大，说明两个商品的关联关系非常不平衡，购买商品A的顾客很可能同时会买商品B，而购买了商品B的用户不太会再去买商品A。</p>
+<p>修改【字数统计】，找到如下代码：</p>
+<p><img src="/images/13_pic04.png" alt=""></p>
+<p>修改为：</p>
+<p><img src="/images/13_pic05.png" alt=""></p>
+<p>同理，我们修改【阅读时长】，修改后如下：</p>
+<p><img src="/images/13_pic06.png" alt=""></p>
+<p>修改完成后，重新执行启动服务预览就可以了。</p>
 
       
     </div>
@@ -412,8 +412,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/1000010.html" rel="next" title="Hive常用函数介绍（二）">
-                <i class="fa fa-chevron-left"></i> Hive常用函数介绍（二）
+              <a href="/1000012.html" rel="next" title="Hive SQL主要开窗函数用法介绍">
+                <i class="fa fa-chevron-left"></i> Hive SQL主要开窗函数用法介绍
               </a>
             
           </div>
@@ -421,10 +421,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/1000012.html" rel="prev" title="Hive SQL主要开窗函数用法介绍">
-                Hive SQL主要开窗函数用法介绍 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -476,8 +472,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -519,6 +524,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、阅读全文"><span class="nav-number">1.</span> <span class="nav-text">1、阅读全文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、字数统计-amp-阅读时长"><span class="nav-number">2.</span> <span class="nav-text">2、字数统计&amp;阅读时长</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
