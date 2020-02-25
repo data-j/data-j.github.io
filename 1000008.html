@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1  FAILED: NullPointerException null   不能用视图作为left outer join的右表 2 left semi join 的右边表的字段，不能出现在select列中  3  FAILED: SemanticException Column ***_id Found in more than One Tables/Subqueries  有一列在多个表中出现">
+<meta name="description" content="Hive不支持where子句中的子查询，SQL常用的exist in子句在Hive中是不支持的。比如以下语句在Hive中执行会报错：  select a.key, a.valuefrom awhere a.key in (select b.key from b);  semi join可以完美解决这一问题，可以改写为：  select a.key, a.valuefrom a left semi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hive Sql常见报错">
-<meta property="og:url" content="http://yoursite.com/2018/06/19/1000009/index.html">
+<meta property="og:title" content="Hive学习之semi join">
+<meta property="og:url" content="http://yoursite.com/1000008.html">
 <meta property="og:site_name" content="数术">
-<meta property="og:description" content="1  FAILED: NullPointerException null   不能用视图作为left outer join的右表 2 left semi join 的右边表的字段，不能出现在select列中  3  FAILED: SemanticException Column ***_id Found in more than One Tables/Subqueries  有一列在多个表中出现">
+<meta property="og:description" content="Hive不支持where子句中的子查询，SQL常用的exist in子句在Hive中是不支持的。比如以下语句在Hive中执行会报错：  select a.key, a.valuefrom awhere a.key in (select b.key from b);  semi join可以完美解决这一问题，可以改写为：  select a.key, a.valuefrom a left semi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-19T12:00:00.605Z">
+<meta property="og:updated_time" content="2018-06-19T11:54:47.076Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hive Sql常见报错">
-<meta name="twitter:description" content="1  FAILED: NullPointerException null   不能用视图作为left outer join的右表 2 left semi join 的右边表的字段，不能出现在select列中  3  FAILED: SemanticException Column ***_id Found in more than One Tables/Subqueries  有一列在多个表中出现">
+<meta name="twitter:title" content="Hive学习之semi join">
+<meta name="twitter:description" content="Hive不支持where子句中的子查询，SQL常用的exist in子句在Hive中是不支持的。比如以下语句在Hive中执行会报错：  select a.key, a.valuefrom awhere a.key in (select b.key from b);  semi join可以完美解决这一问题，可以改写为：  select a.key, a.valuefrom a left semi">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/19/1000009/"/>
+  <link rel="canonical" href="http://yoursite.com/1000008.html"/>
 
 
 
 
 
-  <title>Hive Sql常见报错 | 数术</title>
+  <title>Hive学习之semi join | 数术</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/1000009/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/1000008.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mable">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hive Sql常见报错</h1>
+          <h1 class="post-title" itemprop="name headline">Hive学习之semi join</h1>
         
 
         <div class="post-meta">
@@ -271,7 +271,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T19:27:04+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T19:26:57+08:00">
                 2018-06-19
               </time>
             
@@ -287,7 +287,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T20:00:00+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T19:54:47+08:00">
                 2018-06-19
               </time>
             
@@ -352,46 +352,19 @@
       
 
       
-        <p>1</p>
+        <p>Hive不支持where子句中的子查询，SQL常用的exist in子句在Hive中是不支持的。比如以下语句在Hive中执行会报错：</p>
 <blockquote>
-<p>FAILED: NullPointerException null </p>
+<p>select a.key, a.value<br>from a<br>where a.key in (select b.key from b);</p>
 </blockquote>
-<p>不能用视图作为left outer join的右表</p>
-<p>2</p>
-<p>left semi join 的右边表的字段，不能出现在select列中 </p>
-<p>3</p>
+<p>semi join可以完美解决这一问题，可以改写为：</p>
 <blockquote>
-<p>FAILED: SemanticException Column ***_id Found in more than One Tables/Subqueries</p>
+<p>select a.key, a.value<br>from a left semi join b on (a.key = b.key);</p>
 </blockquote>
-<p>有一列在多个表中出现，但是没加表名前缀</p>
-<p>4</p>
-<p>left outer join 的使用，对于右表的筛选条件的设置要特别注意，如果放在where中，则left join会变为inner join，实际是先执行了left join之后，又执行筛选，这样会把左边中的部分记录删除，不符合left join对左表取全量的初衷了。需要将右表条件以子表的形式指定，或者放在on中。</p>
-<p>5</p>
+<p>注意，semi join的写法并不等同于以下写法。当b表中key存在重复记录时，以下语句会查出多条记录。</p>
 <blockquote>
-<p>FAILED: ParseException line 3:0 cannot recognize input near ‘from’’(‘’select’ in selection target</p>
+<p>select a.key, a.value<br>from a left outer join b on (a.key = b.key)<br>where b.key is not null;</p>
 </blockquote>
-<p>无法识别在’from’和’(‘、’select’附近的输入，这种一般就是多了个符号，或者符号格式不对，在提示的位置找一下即可</p>
-<p>6</p>
-<blockquote>
-<p>FAILED: SemanticException [Error 10004]:line 4:59 Invalid table alias or column reference ‘p_<em>‘:(possible column names are:</em>)</p>
-</blockquote>
-<p>该语句的第四行、59个字符开始出现错误，列名引用错误</p>
-<p>7</p>
-<blockquote>
-<p>FAILED: SemanticException [Error 10052]: In strict mode,cartesian product is not allowed. If you really want to perform the operation,set hive.mapred.mode=nonstrict</p>
-</blockquote>
-<p>语法中计算了笛卡尔积。少写了on条件，如果要求笛卡尔积可以写 on 1=1。</p>
-<p>8</p>
-<blockquote>
-<p>FAILED: SemanticException [Error 10001]:line 1:14 Table not found ‘***’</p>
-</blockquote>
-<p>表名错误，或者没有加数据库名前缀</p>
-<p>9</p>
-<blockquote>
-<p>FAILED: Execution Error,return code 2 from org.apache.hadoop.hive.ql.exec.mr.MapRedTask</p>
-</blockquote>
-<p>很多错误都可能导致这个错误。本人遇到的大多是部分内置函数的字段存在NULL值导致</p>
-<p>除了这个错误提示，基本上都可以从错误提示的内容，快速发现问题。</p>
+<p>a left semi join b on (a.key = b.key)：当a表中key值在b表中存在时保留该记录，否则就不保留。</p>
 
       
     </div>
@@ -416,8 +389,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/19/1000008/" rel="next" title="Hive学习之semi join">
-                <i class="fa fa-chevron-left"></i> Hive学习之semi join
+              <a href="/1000007.html" rel="next" title="Hive简单优化总结">
+                <i class="fa fa-chevron-left"></i> Hive简单优化总结
               </a>
             
           </div>
@@ -426,8 +399,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/19/1000010/" rel="prev" title="Hive常用函数介绍（二）">
-                Hive常用函数介绍（二） <i class="fa fa-chevron-right"></i>
+              <a href="/1000009.html" rel="prev" title="Hive Sql常见报错">
+                Hive Sql常见报错 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

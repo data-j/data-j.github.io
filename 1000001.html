@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="显示所有数据库  show databases  显示所有表  show tables  显示数据库a中的所有表  show tables from a  显示所有以dw_开头的表  show tables ‘dw_*’  显示数据库a中所有以dw_开头的表  show tables from a ‘dw_*’  显示表数据库a中表dw_abc的分区信息  show partitions a.dw">
+<meta name="description" content="I AM COMING!">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hive常用函数介绍（二）">
-<meta property="og:url" content="http://yoursite.com/2018/06/19/1000010/index.html">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://yoursite.com/1000001.html">
 <meta property="og:site_name" content="数术">
-<meta property="og:description" content="显示所有数据库  show databases  显示所有表  show tables  显示数据库a中的所有表  show tables from a  显示所有以dw_开头的表  show tables ‘dw_*’  显示数据库a中所有以dw_开头的表  show tables from a ‘dw_*’  显示表数据库a中表dw_abc的分区信息  show partitions a.dw">
+<meta property="og:description" content="I AM COMING!">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-19T12:03:43.129Z">
+<meta property="og:updated_time" content="2018-06-16T01:50:06.229Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hive常用函数介绍（二）">
-<meta name="twitter:description" content="显示所有数据库  show databases  显示所有表  show tables  显示数据库a中的所有表  show tables from a  显示所有以dw_开头的表  show tables ‘dw_*’  显示数据库a中所有以dw_开头的表  show tables from a ‘dw_*’  显示表数据库a中表dw_abc的分区信息  show partitions a.dw">
+<meta name="twitter:title" content="Hello World">
+<meta name="twitter:description" content="I AM COMING!">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/19/1000010/"/>
+  <link rel="canonical" href="http://yoursite.com/1000001.html"/>
 
 
 
 
 
-  <title>Hive常用函数介绍（二） | 数术</title>
+  <title>Hello World | 数术</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/1000010/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/1000001.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mable">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hive常用函数介绍（二）</h1>
+          <h1 class="post-title" itemprop="name headline">Hello World</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T19:27:14+08:00">
-                2018-06-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-16T09:37:31+08:00">
+                2018-06-16
               </time>
             
 
@@ -287,8 +287,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T20:03:43+08:00">
-                2018-06-19
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-16T09:50:06+08:00">
+                2018-06-16
               </time>
             
           </span>
@@ -352,74 +352,7 @@
       
 
       
-        <p>显示所有数据库</p>
-<blockquote>
-<p>show databases</p>
-</blockquote>
-<p>显示所有表</p>
-<blockquote>
-<p>show tables</p>
-</blockquote>
-<p>显示数据库a中的所有表</p>
-<blockquote>
-<p>show tables from a</p>
-</blockquote>
-<p>显示所有以dw_开头的表</p>
-<blockquote>
-<p>show tables ‘dw_*’</p>
-</blockquote>
-<p>显示数据库a中所有以dw_开头的表</p>
-<blockquote>
-<p>show tables from a ‘dw_*’</p>
-</blockquote>
-<p>显示表数据库a中表dw_abc的分区信息</p>
-<blockquote>
-<p>show partitions a.dw_abc</p>
-</blockquote>
-<p>显示内置函数</p>
-<blockquote>
-<p>show functions</p>
-</blockquote>
-<p>显示包含date_ad的内置函数</p>
-<blockquote>
-<p>show functions ‘date_ad*’</p>
-</blockquote>
-<p>显示表guestbook的列信息，describe也可缩写为desc</p>
-<blockquote>
-<p>describe guestbook</p>
-</blockquote>
-<p>显示表guestbook中列userid的信息</p>
-<blockquote>
-<p>describe guestbook userid</p>
-</blockquote>
-<p>显示数据库a中guestbook表的列名称，一般用的较少，describe显示的信息更多</p>
-<blockquote>
-<p>show columns from a.guestbook</p>
-</blockquote>
-<p>显示数据库a中表guestbook，指定分区的列信息</p>
-<blockquote>
-<p>describe a.guestbook partition(day=’2018-02-12’)</p>
-</blockquote>
-<p>如果e1为null，则返回e2，否则返回e1</p>
-<blockquote>
-<p>nvl(e1,e2)</p>
-</blockquote>
-<p>返回当年第一天</p>
-<blockquote>
-<p>select trunc(‘2018-02-13 23:30:35’,’YY’) –2018-01-01</p>
-</blockquote>
-<p>返回当月第一天</p>
-<blockquote>
-<p>select trunc(‘2018-02-13 23:30:35’,’MM’) –2018-02-01</p>
-</blockquote>
-<p>返回当月最后一天，只传入2018-02-13也可</p>
-<blockquote>
-<p>select last_day(‘2018-02-13 23:30:35’) –2018-02-28</p>
-</blockquote>
-<p>返回下一个周一，第二个参数修改为TU，则返回下一个周二，依次WE,TH,FR,SASU为周三、周四等</p>
-<blockquote>
-<p>select next_day(‘2018-02-13 23:30:35’,’MO’)</p>
-</blockquote>
+        <p>I AM COMING!</p>
 
       
     </div>
@@ -444,18 +377,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/19/1000009/" rel="next" title="Hive Sql常见报错">
-                <i class="fa fa-chevron-left"></i> Hive Sql常见报错
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/19/1000011/" rel="prev" title="数据挖掘算法：啤酒与尿布的SQL实现">
-                数据挖掘算法：啤酒与尿布的SQL实现 <i class="fa fa-chevron-right"></i>
+              <a href="/1000002.html" rel="prev" title="利用hexo+github搭建个人博客全流程">
+                利用hexo+github搭建个人博客全流程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

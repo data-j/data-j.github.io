@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Hive不支持where子句中的子查询，SQL常用的exist in子句在Hive中是不支持的。比如以下语句在Hive中执行会报错：  select a.key, a.valuefrom awhere a.key in (select b.key from b);  semi join可以完美解决这一问题，可以改写为：  select a.key, a.valuefrom a left semi">
+<meta name="description" content="显示所有数据库  show databases  显示所有表  show tables  显示数据库a中的所有表  show tables from a  显示所有以dw_开头的表  show tables ‘dw_*’  显示数据库a中所有以dw_开头的表  show tables from a ‘dw_*’  显示表数据库a中表dw_abc的分区信息  show partitions a.dw">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hive学习之semi join">
-<meta property="og:url" content="http://yoursite.com/2018/06/19/1000008/index.html">
+<meta property="og:title" content="Hive常用函数介绍（二）">
+<meta property="og:url" content="http://yoursite.com/1000010.html">
 <meta property="og:site_name" content="数术">
-<meta property="og:description" content="Hive不支持where子句中的子查询，SQL常用的exist in子句在Hive中是不支持的。比如以下语句在Hive中执行会报错：  select a.key, a.valuefrom awhere a.key in (select b.key from b);  semi join可以完美解决这一问题，可以改写为：  select a.key, a.valuefrom a left semi">
+<meta property="og:description" content="显示所有数据库  show databases  显示所有表  show tables  显示数据库a中的所有表  show tables from a  显示所有以dw_开头的表  show tables ‘dw_*’  显示数据库a中所有以dw_开头的表  show tables from a ‘dw_*’  显示表数据库a中表dw_abc的分区信息  show partitions a.dw">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-19T11:54:47.076Z">
+<meta property="og:updated_time" content="2018-06-19T12:03:43.129Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hive学习之semi join">
-<meta name="twitter:description" content="Hive不支持where子句中的子查询，SQL常用的exist in子句在Hive中是不支持的。比如以下语句在Hive中执行会报错：  select a.key, a.valuefrom awhere a.key in (select b.key from b);  semi join可以完美解决这一问题，可以改写为：  select a.key, a.valuefrom a left semi">
+<meta name="twitter:title" content="Hive常用函数介绍（二）">
+<meta name="twitter:description" content="显示所有数据库  show databases  显示所有表  show tables  显示数据库a中的所有表  show tables from a  显示所有以dw_开头的表  show tables ‘dw_*’  显示数据库a中所有以dw_开头的表  show tables from a ‘dw_*’  显示表数据库a中表dw_abc的分区信息  show partitions a.dw">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/19/1000008/"/>
+  <link rel="canonical" href="http://yoursite.com/1000010.html"/>
 
 
 
 
 
-  <title>Hive学习之semi join | 数术</title>
+  <title>Hive常用函数介绍（二） | 数术</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/1000008/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/1000010.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mable">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hive学习之semi join</h1>
+          <h1 class="post-title" itemprop="name headline">Hive常用函数介绍（二）</h1>
         
 
         <div class="post-meta">
@@ -271,7 +271,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T19:26:57+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T19:27:14+08:00">
                 2018-06-19
               </time>
             
@@ -287,7 +287,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T19:54:47+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T20:03:43+08:00">
                 2018-06-19
               </time>
             
@@ -352,19 +352,74 @@
       
 
       
-        <p>Hive不支持where子句中的子查询，SQL常用的exist in子句在Hive中是不支持的。比如以下语句在Hive中执行会报错：</p>
+        <p>显示所有数据库</p>
 <blockquote>
-<p>select a.key, a.value<br>from a<br>where a.key in (select b.key from b);</p>
+<p>show databases</p>
 </blockquote>
-<p>semi join可以完美解决这一问题，可以改写为：</p>
+<p>显示所有表</p>
 <blockquote>
-<p>select a.key, a.value<br>from a left semi join b on (a.key = b.key);</p>
+<p>show tables</p>
 </blockquote>
-<p>注意，semi join的写法并不等同于以下写法。当b表中key存在重复记录时，以下语句会查出多条记录。</p>
+<p>显示数据库a中的所有表</p>
 <blockquote>
-<p>select a.key, a.value<br>from a left outer join b on (a.key = b.key)<br>where b.key is not null;</p>
+<p>show tables from a</p>
 </blockquote>
-<p>a left semi join b on (a.key = b.key)：当a表中key值在b表中存在时保留该记录，否则就不保留。</p>
+<p>显示所有以dw_开头的表</p>
+<blockquote>
+<p>show tables ‘dw_*’</p>
+</blockquote>
+<p>显示数据库a中所有以dw_开头的表</p>
+<blockquote>
+<p>show tables from a ‘dw_*’</p>
+</blockquote>
+<p>显示表数据库a中表dw_abc的分区信息</p>
+<blockquote>
+<p>show partitions a.dw_abc</p>
+</blockquote>
+<p>显示内置函数</p>
+<blockquote>
+<p>show functions</p>
+</blockquote>
+<p>显示包含date_ad的内置函数</p>
+<blockquote>
+<p>show functions ‘date_ad*’</p>
+</blockquote>
+<p>显示表guestbook的列信息，describe也可缩写为desc</p>
+<blockquote>
+<p>describe guestbook</p>
+</blockquote>
+<p>显示表guestbook中列userid的信息</p>
+<blockquote>
+<p>describe guestbook userid</p>
+</blockquote>
+<p>显示数据库a中guestbook表的列名称，一般用的较少，describe显示的信息更多</p>
+<blockquote>
+<p>show columns from a.guestbook</p>
+</blockquote>
+<p>显示数据库a中表guestbook，指定分区的列信息</p>
+<blockquote>
+<p>describe a.guestbook partition(day=’2018-02-12’)</p>
+</blockquote>
+<p>如果e1为null，则返回e2，否则返回e1</p>
+<blockquote>
+<p>nvl(e1,e2)</p>
+</blockquote>
+<p>返回当年第一天</p>
+<blockquote>
+<p>select trunc(‘2018-02-13 23:30:35’,’YY’) –2018-01-01</p>
+</blockquote>
+<p>返回当月第一天</p>
+<blockquote>
+<p>select trunc(‘2018-02-13 23:30:35’,’MM’) –2018-02-01</p>
+</blockquote>
+<p>返回当月最后一天，只传入2018-02-13也可</p>
+<blockquote>
+<p>select last_day(‘2018-02-13 23:30:35’) –2018-02-28</p>
+</blockquote>
+<p>返回下一个周一，第二个参数修改为TU，则返回下一个周二，依次WE,TH,FR,SASU为周三、周四等</p>
+<blockquote>
+<p>select next_day(‘2018-02-13 23:30:35’,’MO’)</p>
+</blockquote>
 
       
     </div>
@@ -389,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/19/1000007/" rel="next" title="Hive简单优化总结">
-                <i class="fa fa-chevron-left"></i> Hive简单优化总结
+              <a href="/1000009.html" rel="next" title="Hive Sql常见报错">
+                <i class="fa fa-chevron-left"></i> Hive Sql常见报错
               </a>
             
           </div>
@@ -399,8 +454,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/19/1000009/" rel="prev" title="Hive Sql常见报错">
-                Hive Sql常见报错 <i class="fa fa-chevron-right"></i>
+              <a href="/1000011.html" rel="prev" title="数据挖掘算法：啤酒与尿布的SQL实现">
+                数据挖掘算法：啤酒与尿布的SQL实现 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
