@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://data-j.github.io/1000021.html</loc>
+    <lastmod>2021-07-04</lastmod>
+  </url>  <url>
+    <loc>http://data-j.github.io/1000001.html</loc>
+    <lastmod>2021-07-04</lastmod>
+  </url>  <url>
+    <loc>http://data-j.github.io/1000002.html</loc>
+    <lastmod>2021-07-04</lastmod>
+  </url>  <url>
     <loc>http://data-j.github.io/1000020.html</loc>
     <lastmod>2020-04-07</lastmod>
   </url>  <url>
@@ -20,9 +29,6 @@
     <lastmod>2020-02-27</lastmod>
   </url>  <url>
     <loc>http://data-j.github.io/1000013.html</loc>
-    <lastmod>2020-02-27</lastmod>
-  </url>  <url>
-    <loc>http://data-j.github.io/1000002.html</loc>
     <lastmod>2020-02-27</lastmod>
   </url>  <url>
     <loc>http://data-j.github.io/1000003.html</loc>
@@ -57,8 +63,5 @@
   </url>  <url>
     <loc>http://data-j.github.io/1000014.html</loc>
     <lastmod>2020-02-27</lastmod>
-  </url>  <url>
-    <loc>http://data-j.github.io/1000001.html</loc>
-    <lastmod>2018-06-16</lastmod>
   </url>
 </urlset>
